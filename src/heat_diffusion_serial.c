@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
+#include <sys/time.h>
 
 static inline size_t idx(int x, int y, int z, int nx, int ny) {
     return (size_t)z * (size_t)ny * (size_t)nx + (size_t)y * (size_t)nx + (size_t)x;
 }
 
 static double wall_time_seconds(void) {
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return (double)tv.tv_sec + (double)tv.tv_usec * 1e-6;
 }
 
 static void initialize(double *grid, int nx, int ny, int nz) {
-    memset(grid, 0, (size_t)nx * (size_t)ny * (size_t)nz * sizeof(double));
+    size_t total = (size_t)nx * (size_t)ny * (size_t)nz;
+    memset(grid, 0, total * sizeof(double));
 
     int cx = nx / 2;
     int cy = ny / 2;
