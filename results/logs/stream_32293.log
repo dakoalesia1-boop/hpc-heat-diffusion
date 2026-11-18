@@ -1,0 +1,41 @@
+=== job 32293 (stream) on julia at 2026-11-18T14:18:59+01:00
+=== git commit: d91f637
+=== partition: cpu  nodes: julia  ntasks: 1  cpus_per_task: 64
+=== allowed cpus: 165-196,421-452
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+--- stream threads=1
+Copy:           52011.3     0.064733     0.061525     0.080792
+Triad:          44515.3     0.129728     0.107828     0.153882
+--- stream threads=2
+Copy:           83494.2     0.041619     0.038326     0.063957
+Triad:          63969.3     0.078597     0.075036     0.106686
+--- stream threads=4
+Copy:          117786.5     0.027923     0.027168     0.039932
+Triad:          86466.0     0.057695     0.055513     0.078930
+--- stream threads=8
+Copy:          121405.8     0.026832     0.026358     0.033341
+Triad:          89495.6     0.054129     0.053634     0.059344
+--- stream threads=16
+Copy:          118659.1     0.027226     0.026968     0.027501
+Triad:          88920.1     0.054335     0.053981     0.054867
+--- stream threads=32
+Copy:          116022.0     0.027776     0.027581     0.029811
+Triad:          87783.3     0.054869     0.054680     0.055486
+--- stream threads=64
+Copy:           78821.8     0.040763     0.040598     0.041047
+Triad:          86936.1     0.055383     0.055213     0.055690

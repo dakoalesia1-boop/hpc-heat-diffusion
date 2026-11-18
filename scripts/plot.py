@@ -20,6 +20,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 CSV = "results/csv/results.csv"
 OUT = "results/plots"
+STREAM_GBS = 89.5       # best STREAM Triad bandwidth on julia (GB/s); update from the newest stream log
+BYTES_PER_UPDATE = 16   # one 8-byte read + one 8-byte write per cell update (ideal caching)
 
 
 def load():
@@ -27,11 +29,11 @@ def load():
         return list(csv.DictReader(f))
 
 
-def median_times(rows, version, n, key):
+def median_times(rows, version, n, key, bind=None):
     """Median total time per worker count (key = 'threads' or 'ranks') for one version and grid size."""
     groups = defaultdict(list)
     for r in rows:
-        if r["version"] == version and int(r["nx"]) == n:
+        if r["version"] == version and int(r["nx"]) == n and (bind is None or r.get("bind", "") == bind):
             groups[int(r[key])].append(float(r["total_s"]))
     return {k: statistics.median(v) for k, v in sorted(groups.items())}
 
@@ -79,27 +81,63 @@ def main():
     for n, t in serial.items():
         print(f"  {n:4d}^3  {t:9.3f} s")
 
-    for version, key, label in [("openmp", "threads", "OpenMP threads"), ("mpi", "ranks", "MPI ranks")]:
-        cand = [n for n in sizes if median_times(rows, version, n, key)]
+    series = {}
+    for version, key, label, bind in [("openmp", "threads", "OpenMP threads", "close"),
+                                      ("openmp", "threads", "OpenMP threads", "spread"),
+                                      ("mpi", "ranks", "MPI ranks", None)]:
+        tag = f"{version}_{bind}" if bind else version
+        cand = [n for n in sizes if median_times(rows, version, n, key, bind)]
         if not cand:
             continue
         n = want if want in cand else max(cand)
-        times = median_times(rows, version, n, key)
+        times = median_times(rows, version, n, key, bind)
         t_ref = serial.get(n, times.get(1))
         if t_ref is None:
             print(f"no serial or 1-worker run for {version} at {n}^3; skipping")
             continue
-        fig, sp, ef = scaling_plot(f"{version} strong scaling, {n}^3 grid", label, times, t_ref)
-        path = f"{OUT}/{version}_scaling_{n}.png"
+        fig, sp, ef = scaling_plot(f"{tag} strong scaling, {n}^3 grid", label, times, t_ref)
+        path = f"{OUT}/{tag}_scaling_{n}.png"
         fig.savefig(path, dpi=150)
         plt.close(fig)
-        print(f"\n{version} at {n}^3 (reference {t_ref:.3f} s) -> {path}")
+        series[tag] = (n, times, t_ref)
+        print(f"\n{tag} at {n}^3 (reference {t_ref:.3f} s) -> {path}")
         print(f"  {label:>15}  time_s   speedup  efficiency")
         for (p, t), s, e in zip(times.items(), sp, ef):
             print(f"  {p:15d}  {t:7.3f}  {s:7.2f}  {100 * e:6.1f}%")
         if version == "mpi":
             for p, c in comm_share(rows, n).items():
                 print(f"  ranks={p:3d}: communication = {100 * c:5.1f}% of runtime")
+    if series:
+        n0 = next(iter(series.values()))[0]
+        ser = [float(r["mlups"]) for r in rows if r["version"] == "serial" and int(r["nx"]) == n0]
+        fig, ax = plt.subplots(figsize=(7, 4.5))
+        ticks = set()
+        for tag, (n, times, t_ref) in series.items():
+            ps = list(times)
+            ticks.update(ps)
+            ax.plot(ps, [t_ref / times[p] for p in ps], "o-", label=f"{tag}, {n}^3")
+        ticks = sorted(ticks)
+        ax.plot(ticks, ticks, "--", color="gray", label="ideal")
+        if ser:
+            bound = STREAM_GBS * 1e3 / BYTES_PER_UPDATE / statistics.median(ser)
+            ax.axhline(bound, color="red", linestyle=":", label=f"memory-bandwidth limit ({STREAM_GBS} GB/s STREAM)")
+            print(f"\nmemory-bandwidth speedup limit at {n0}^3: {bound:.2f}x")
+        ax.set_xscale("log", base=2)
+        ax.set_yscale("log", base=2)
+        ax.set_xticks(ticks)
+        ax.set_xticklabels([str(p) for p in ticks])
+        ax.set_yticks(ticks)
+        ax.set_yticklabels([str(p) for p in ticks])
+        ax.set_xlabel("OpenMP threads / MPI ranks")
+        ax.set_ylabel("speedup vs serial")
+        ax.set_title(f"Speedup vs memory-bandwidth limit, {n0}^3 grid")
+        ax.grid(alpha=0.3)
+        ax.legend(fontsize=8)
+        fig.tight_layout()
+        path = f"{OUT}/speedup_vs_stream_{n0}.png"
+        fig.savefig(path, dpi=150)
+        plt.close(fig)
+        print(f"comparison plot -> {path}")
 
 
 if __name__ == "__main__":
