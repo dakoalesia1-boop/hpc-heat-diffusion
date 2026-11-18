@@ -1,0 +1,16 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 93.87      1.52     1.52      100    15.21    15.21  heat_step_planes
+  1.85      1.55     0.03        2    15.01    30.01  heat_init_planes
+  1.85      1.58     0.03        1    30.01    30.01  heat_idx
+  1.24      1.60     0.02 32774128     0.00     0.00  heat_initial_value
+  0.62      1.61     0.01 33554432     0.00     0.00  heat_idx
+  0.62      1.62     0.01        1    10.00    10.00  heat_sum_planes
+  0.00      1.62     0.00  6451600     0.00     0.00  heat_idx.constprop.0
+  0.00      1.62     0.00        2     0.00     0.00  heat_wtime
+  0.00      1.62     0.00        1     0.00     0.00  heat_parse_args
+  0.00      1.62     0.00        1     0.00     0.00  heat_print_result
+  0.00      1.62     0.00        1     0.00     0.00  heat_slurm_nodes

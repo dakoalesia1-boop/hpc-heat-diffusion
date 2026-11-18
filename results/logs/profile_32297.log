@@ -1,0 +1,53 @@
+=== job 32297 (profile) on julia at 2026-11-18T14:25:17+01:00
+=== git commit: d153acd
+=== partition: cpu  nodes: julia  ntasks: 1  cpus_per_task: 2
+=== allowed cpus: 165,421
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+=== perf_event_paranoid: 4
+--- gprof: 256^3, 100 steps
+RESULT,serial,256,256,256,100,1,1,1,0,1.728126,1.728126,0.000000,2.6214400000e+07,9.9999999999e+01,948.26
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 93.87      1.52     1.52      100    15.21    15.21  heat_step_planes
+  1.85      1.55     0.03        2    15.01    30.01  heat_init_planes
+  1.85      1.58     0.03        1    30.01    30.01  heat_idx
+  1.24      1.60     0.02 32774128     0.00     0.00  heat_initial_value
+  0.62      1.61     0.01 33554432     0.00     0.00  heat_idx
+  0.62      1.62     0.01        1    10.00    10.00  heat_sum_planes
+  0.00      1.62     0.00  6451600     0.00     0.00  heat_idx.constprop.0
+  0.00      1.62     0.00        2     0.00     0.00  heat_wtime
+  0.00      1.62     0.00        1     0.00     0.00  heat_parse_args
+  0.00      1.62     0.00        1     0.00     0.00  heat_print_result
+--- cachegrind: 256^3, 5 steps, last-level cache 32 MB
+RESULT,serial,256,256,256,5,1,1,1,0,2.850761,2.850761,0.000000,2.6214400000e+07,1.0000000000e+02,28.74
+==2090588== I refs:        1,631,662,091
+==2090588== I1  misses:            1,568
+==2090588== LLi misses:            1,558
+==2090588== I1  miss rate:          0.00%
+==2090588== LLi miss rate:          0.00%
+==2090588== D refs:          568,916,654  (499,516,066 rd   + 69,400,588 wr)
+==2090588== D1  misses:       47,671,060  ( 33,152,434 rd   + 14,518,626 wr)
+==2090588== LLd misses:       27,102,699  ( 12,584,096 rd   + 14,518,603 wr)
+==2090588== D1  miss rate:           8.4% (        6.6%     +       20.9%  )
+==2090588== LLd miss rate:           4.8% (        2.5%     +       20.9%  )
+==2090588== LL refs:          47,672,628  ( 33,154,002 rd   + 14,518,626 wr)
+==2090588== LL misses:        27,104,257  ( 12,585,654 rd   + 14,518,603 wr)
+==2090588== LL miss rate:            1.2% (        0.6%     +       20.9%  )
