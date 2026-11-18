@@ -62,3 +62,5 @@ bin/
 *.raw.vtk
 results/validation/
 # Slurm logs use .log so they ARE committed (the brief asks for job logs)
+__pycache__/
+__pycache__/
