@@ -7,8 +7,8 @@
 #   make ARCH=-march=native   -> tune for the CPU that compiles (only if login and compute nodes have the same CPU)
 # Record any flag change in env/compiler_flags.txt.
 
-CC      ?= gcc
-MPICC   ?= mpicc
+CC      = gcc
+MPICC   = mpicc
 ARCH    ?=
 CFLAGS  ?= -O3 $(ARCH) -std=c11 -Wall -Wextra
 OMPFLAG ?= -fopenmp
