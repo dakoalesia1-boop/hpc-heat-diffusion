@@ -1,0 +1,10 @@
+NODELIST PARTITION CPUS MEMORY GRES STATE
+fortran cpu* 512 756000 gpu:rtx6000bb:2 mixed
+fortran gpu 512 756000 gpu:rtx6000bb:2 mixed
+fortran interactive 512 756000 gpu:rtx6000bb:2 mixed
+haskell cpu* 512 406528 gpu:rtx6000ada:2 mixed
+haskell gpu 512 406528 gpu:rtx6000ada:2 mixed
+haskell interactive 512 406528 gpu:rtx6000ada:2 mixed
+julia cpu* 512 515002 gpu:rtx6000bb:1 mixed
+julia gpu 512 515002 gpu:rtx6000bb:1 mixed
+julia interactive 512 515002 gpu:rtx6000bb:1 mixed

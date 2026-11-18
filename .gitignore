@@ -53,3 +53,12 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# --- project ---
+# compiled binaries (rebuild with make)
+bin/
+# large field dumps and validation scratch files
+*.raw
+*.raw.vtk
+results/validation/
+# Slurm logs use .log so they ARE committed (the brief asks for job logs)

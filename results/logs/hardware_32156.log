@@ -1,0 +1,56 @@
+=== job 32156 (hardware) on julia at 2026-11-18T01:05:58+01:00
+=== git commit: unknown
+=== partition: cpu  nodes: julia  ntasks: 1  cpus_per_task: 1
+=== allowed cpus: 128,384
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+
+Currently Loaded Modules:
+  1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+  2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+  3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+  4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+  5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+  6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+  7) OpenSSL/1.1                       17) gompi/2023b
+  8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+  9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+ 10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+
+ 
+
+Saved env/lscpu.txt, env/memory.txt, env/nproc.txt, env/sinfo.txt, env/modules.txt, env/compiler_version.txt
+CPU(s):                                  512
+Model name:                              AMD EPYC 9745 128-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      128
+Socket(s):                               2
+CPU(s) scaling MHz:                      68%
+L1d cache:                               12 MiB (256 instances)
+L2 cache:                                256 MiB (256 instances)
+L3 cache:                                512 MiB (16 instances)
+NUMA node(s):                            2
+NODELIST PARTITION CPUS MEMORY GRES STATE
+fortran cpu* 512 756000 gpu:rtx6000bb:2 mixed
+fortran gpu 512 756000 gpu:rtx6000bb:2 mixed
+fortran interactive 512 756000 gpu:rtx6000bb:2 mixed
+haskell cpu* 512 406528 gpu:rtx6000ada:2 mixed
+haskell gpu 512 406528 gpu:rtx6000ada:2 mixed
+haskell interactive 512 406528 gpu:rtx6000ada:2 mixed
+julia cpu* 512 515002 gpu:rtx6000bb:1 mixed
+julia gpu 512 515002 gpu:rtx6000bb:1 mixed
+julia interactive 512 515002 gpu:rtx6000bb:1 mixed

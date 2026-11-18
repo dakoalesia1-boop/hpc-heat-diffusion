@@ -1,0 +1,2 @@
+haskell slots=2
+julia slots=2

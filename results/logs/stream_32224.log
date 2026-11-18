@@ -1,0 +1,41 @@
+=== job 32224 (stream) on julia at 2026-11-18T09:05:02+01:00
+=== git commit: unknown
+=== partition: cpu  nodes: julia  ntasks: 1  cpus_per_task: 64
+=== allowed cpus: 2,3,6-35,258,259,262-291
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+--- stream threads=1
+Copy:           54440.1     0.060837     0.058780     0.077635
+Triad:          40601.9     0.124308     0.118221     0.142044
+--- stream threads=2
+Copy:           85561.5     0.042611     0.037400     0.072996
+Triad:          66102.1     0.080537     0.072615     0.101707
+--- stream threads=4
+Copy:          119425.7     0.028936     0.026795     0.041311
+Triad:          87409.4     0.057832     0.054914     0.073612
+--- stream threads=8
+Copy:          123433.4     0.026043     0.025925     0.026237
+Triad:          90914.1     0.053435     0.052797     0.058978
+--- stream threads=16
+Copy:          120342.3     0.026725     0.026591     0.026882
+Triad:          90262.8     0.053723     0.053178     0.055867
+--- stream threads=32
+Copy:          118172.3     0.027196     0.027079     0.027781
+Triad:          88834.5     0.054303     0.054033     0.055803
+--- stream threads=64
+Copy:           79820.2     0.040377     0.040090     0.042425
+Triad:          88021.6     0.054688     0.054532     0.054938

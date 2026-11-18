@@ -1,0 +1,32 @@
+=== job 32161 (multinode) on haskell at 2026-11-18T01:05:58+01:00
+=== git commit: unknown
+=== partition: cpu  nodes: haskell,julia  ntasks: 4  cpus_per_task: 1
+=== allowed cpus: 8,264
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+--- allocated nodes: haskell,julia
+--- test 1: srun across both nodes
+      2 haskell
+      2 julia
+--- test 2: mpirun with the Slurm launcher (spans nodes if srun works)
+RESULT,mpi,128,128,128,100,2,4,1,0,1.675591,0.073225,1.636338,3.2768000000e+06,9.9878539348e+01,119.38
+--- test 3: mpirun with an explicit host list (uses ssh between nodes)
+* an inability to create a connection back to mpirun due to a
+  lack of common network interfaces and/or no route found between
+  them. Please check network connectivity (including firewalls
+  and network routing requirements).
+--------------------------------------------------------------------------
