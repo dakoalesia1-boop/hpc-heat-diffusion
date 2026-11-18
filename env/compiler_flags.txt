@@ -1,0 +1,11 @@
+Compiler flags (from the Makefile)
+
+All versions:  -O3 -std=c11 -Wall -Wextra   (link: -lm)
+OpenMP:        + -fopenmp
+MPI:           built with mpicc (wraps the same gcc and flags)
+
+Optional:      make clean && make ARCH=-march=native
+               Tunes the code for the CPU of the machine that compiles (wider vector instructions).
+               Only safe if the login node has the same CPU as the compute nodes; otherwise the
+               program stops with "Illegal instruction". Comparing with and without it is a
+               cheap optimization / sensitivity experiment.

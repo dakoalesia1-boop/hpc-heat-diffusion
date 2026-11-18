@@ -1,0 +1,33 @@
+=== job 32162 on julia
+NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887 MiB
+--- compilers on the node:
+nvc: not found
+nvcc: not found
+pgcc: not found
+--- GPU-related modules:
+   antismash/7.1.0    gtdbtk/2.7.2              nvhpc/25.7
+   deepbgc/0.1.31     hpc-course-cuda/12.8.1    openfold/be2ec18       (D)
+--- course CUDA container (used by the Practice 2 GPU job):
+total 34843075
+-rwxr-xr-x 1 root  hpc-users   866500608 Jul 13 11:43 deepbgc-0.1.31.sif
+-rw-r--r-- 1 root  hpc-users       56800 Jul 13 11:43 deepbgc-build.log
+-rw-r--r-- 1 root  hpc-users         549 Jul 13 11:39 deepbgc.def
+-rwxr-xr-x 1 root  hpc-users   302796800 Mar 29  2026 dram-1.5.0.sif
+-rwxr-xr-x 1 root  hpc-users   819724288 Mar 29  2026 fegenie-1.2.sif
+-rwxr-xr-x 1 root  hpc-users  5121548288 Sep  6 11:19 hpc-course-cuda-12.8.1.sif
+lrwxrwxrwx 1 root  hpc-users          26 Sep 29 09:50 hpc-course-cuda.sif -> hpc-course-cuda-12.8.1.sif
+-rwxr-xr-x 1 root  hpc-users  1371856896 Mar 29  2026 metabolic-4.0.sif
+-rw-r--r-- 1 root  hpc-users         211 Jul 13 11:39 npbdetect-build.log
+-rwxr-xr-x 1 root  hpc-users   528986112 Jul 13 11:40 npbdetect.sif
+-rwxr-xr-x 1 root  hpc-users  8173359104 Oct 17 13:22 openfold-be2ec18-cu130.sif
+-rwxr-xr-x 1 root  hpc-users 11502604288 Sep 20 12:07 openfold-be2ec18.sif
+-rwxr-xr-x 1 root  hpc-users        2739 Sep 17 21:09 openfold-build.sh
+-rw-r--r-- 1 root  hpc-users        2625 Sep 17 19:51 openfold-build_19595.err
+-rw-r--r-- 1 root  hpc-users       31654 Sep 17 19:42 openfold-build_19595.log
+-rw-r--r-- 1 root  hpc-users        6351 Sep 17 20:08 openfold-build_19597.err
+-rw-r--r-- 1 root  hpc-users       60785 Sep 17 20:08 openfold-build_19597.log
+-rw-r--r-- 1 root  hpc-users        5614 Sep 17 21:31 openfold-build_19599.err
+-rw-r--r-- 1 root  hpc-users       69143 Sep 17 21:31 openfold-build_19599.log
+Cuda compilation tools, release 12.8, V12.8.93
+Build cuda_12.8.r12.8/compiler.35583870_0
+nvc (OpenACC) not in container

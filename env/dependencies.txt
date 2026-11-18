@@ -1,0 +1,15 @@
+Dependencies
+
+Build and run (cluster):
+- GCC with OpenMP support and OpenMPI, both from module foss/2023b (see slurm/env.sh)
+- Slurm
+
+Analysis:
+- Python 3 standard library (scripts/collect.py)
+- matplotlib (scripts/plot.py)
+
+Visualization (optional):
+- ParaView: open <dumpfile>.vtk written by any version when a dump file is given
+
+GPU experiment (planned):
+- NVHPC compiler (nvc) for OpenACC and/or CUDA toolkit (nvcc); availability checked with slurm/check_gpu.sh

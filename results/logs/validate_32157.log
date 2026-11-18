@@ -1,0 +1,26 @@
+=== job 32157 (validate) on julia at 2026-11-18T01:05:58+01:00
+=== git commit: unknown
+=== partition: cpu  nodes: julia  ntasks: 4  cpus_per_task: 1
+=== allowed cpus: 133,134,389,390
+=== gcc: gcc (GCC) 13.2.0
+=== 
+=== Currently Loaded Modules:
+===   1) GCCcore/13.2.0                    11) PMIx/4.2.6-GCCcore-13.2.0
+===   2) GCC/13.2.0                        12) UCC/1.2.0-GCCcore-13.2.0
+===   3) numactl/2.0.16-GCCcore-13.2.0     13) OpenMPI/4.1.6-GCC-13.2.0
+===   4) libxml2/2.11.5-GCCcore-13.2.0     14) OpenBLAS/0.3.24-GCC-13.2.0
+===   5) libpciaccess/0.17-GCCcore-13.2.0  15) FlexiBLAS/3.3.1-GCC-13.2.0
+===   6) hwloc/2.9.2-GCCcore-13.2.0        16) FFTW/3.3.10-GCC-13.2.0
+===   7) OpenSSL/1.1                       17) gompi/2023b
+===   8) libevent/2.1.12-GCCcore-13.2.0    18) FFTW.MPI/3.3.10-gompi-2023b
+===   9) UCX/1.15.0-GCCcore-13.2.0         19) ScaLAPACK/2.2.0-gompi-2023b-fb
+===  10) libfabric/1.19.0-GCCcore-13.2.0   20) foss/2023b
+=== 
+===  
+=== 
+RESULT,serial,64,64,64,200,1,1,1,0,0.037133,0.037133,0.000000,4.0954787628e+05,4.9885221043e+01,1283.63
+RESULT,openmp,64,64,64,200,1,1,4,0,0.018717,0.018717,0.000000,4.0954787628e+05,4.9885221043e+01,2546.63
+RESULT,mpi,64,64,64,200,1,4,1,0,0.021148,0.019133,0.003267,4.0954787628e+05,4.9885221043e+01,2253.94
+PASS  cells=262144  max_abs_diff=0.000e+00  (tolerance 1.0e-10, max value 49.885)  results/validation/serial.raw vs results/validation/omp.raw
+PASS  cells=262144  max_abs_diff=0.000e+00  (tolerance 1.0e-10, max value 49.885)  results/validation/serial.raw vs results/validation/mpi.raw
+ALL VERSIONS MATCH SERIAL
